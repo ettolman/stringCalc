@@ -17,8 +17,10 @@ int stringCalc(std::string numbers){
     
     std::stringstream ss;
     ss << numbers;
-    int num;
-    ss >> num;
+    int num1, num2;
+    char delim;
+    ss >> num1 >> delim >> num2;
+    int num = num1 + num2;
     return num;
     
 }
@@ -35,4 +37,6 @@ TEST_CASE("Passing a single number returns the value"){
 
 TEST_CASE("Two numbers, comma delimited, returns the sum"){
     REQUIRE(stringCalc("1,2") == 3);
+    REQUIRE(stringCalc("22,13") == 35);
+    REQUIRE(stringCalc("115,6") == 121);
 }
