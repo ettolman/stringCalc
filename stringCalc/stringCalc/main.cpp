@@ -29,4 +29,10 @@ TEST_CASE("stringCalc returns 0 when no strings are passed"){
 
 TEST_CASE("Passing a single number returns the value"){
     REQUIRE(stringCalc("2") == 2);
+    REQUIRE(stringCalc("11") == 11);
+    REQUIRE(stringCalc("123") == 123);
+}
+
+TEST_CASE("Two numbers, comma delimited, returns the sum"){
+    REQUIRE(stringCalc("1,2") == 3);
 }
