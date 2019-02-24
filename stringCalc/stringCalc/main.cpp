@@ -8,9 +8,19 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include <iostream>
+#include <sstream>
 
 int stringCalc(std::string numbers){
-    return 0;
+    if(numbers.length() == 0){
+        return 0;
+    }
+    
+    std::stringstream ss;
+    ss << numbers;
+    int num;
+    ss >> num;
+    return num;
+    
 }
 
 TEST_CASE("stringCalc returns 0 when no strings are passed"){
