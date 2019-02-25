@@ -11,17 +11,23 @@
 #include <sstream>
 
 int stringCalc(std::string numbers){
+    
     if(numbers.length() == 0){
         return 0;
     }
     
-    std::stringstream ss;
-    ss << numbers;
-    int num1, num2;
+    int num1;
+    int num2 = 0;
     char delim;
-    ss >> num1 >> delim >> num2;
-    int num = num1 + num2;
-    return num;
+    std::string restOfStr;
+    std::stringstream numString;
+    
+    numString << numbers;
+    numString >> num1 >> delim >> num2;
+    
+    int numTotal = num1 + num2;
+    
+    return numTotal;
     
 }
 
@@ -39,4 +45,8 @@ TEST_CASE("Two numbers, comma delimited, returns the sum"){
     REQUIRE(stringCalc("1,2") == 3);
     REQUIRE(stringCalc("22,13") == 35);
     REQUIRE(stringCalc("115,6") == 121);
+}
+
+TEST_CASE("Two numbers, newline delimited, returns the sum"){
+    REQUIRE(stringCalc("1\n2") == 3);
 }
